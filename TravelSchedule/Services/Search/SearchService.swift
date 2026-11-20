@@ -6,24 +6,18 @@
 import OpenAPIRuntime
 import OpenAPIURLSession
 
-typealias RouteSegments = Components.Schemas.Segments
-
-protocol SearchServiceProtocol {
-    func getSchedualBetweenStations(from: String, to: String) async throws -> RouteSegments
-}
-
 final class SearchService: SearchServiceProtocol {
     private let client: Client
-    private let apikey: String
+    private let apiKey: String
 
-    init(client: Client, apikey: String) {
+    init(client: Client, apiKey: String) {
         self.client = client
-        self.apikey = apikey
+        self.apiKey = apiKey
     }
 
     func getSchedualBetweenStations(from: String, to: String) async throws -> RouteSegments {
         let response = try await client.getSchedualBetweenStations(query: .init(
-            apikey: apikey,
+            apikey: apiKey,
             from: from,
             to: to
         ))

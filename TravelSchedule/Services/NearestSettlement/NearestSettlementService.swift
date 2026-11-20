@@ -6,24 +6,18 @@
 import OpenAPIRuntime
 import OpenAPIURLSession
 
-typealias NearestCity = Components.Schemas.NearestCityResponse
-
-protocol NearestSettlementServiceProtocol {
-    func getNearestCity(lat: Double, lng: Double) async throws -> NearestCity
-}
-
 final class NearestSettlementService: NearestSettlementServiceProtocol {
     private let client: Client
-    private let apikey: String
+    private let apiKey: String
 
-    init(client: Client, apikey: String) {
+    init(client: Client, apiKey: String) {
         self.client = client
-        self.apikey = apikey
+        self.apiKey = apiKey
     }
 
     func getNearestCity(lat: Double, lng: Double) async throws -> NearestCity {
         let response = try await client.getNearestCity(query: .init(
-            apikey: apikey,
+            apikey: apiKey,
             lat: lat,
             lng: lng
         ))
