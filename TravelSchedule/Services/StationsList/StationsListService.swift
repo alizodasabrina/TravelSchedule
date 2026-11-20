@@ -4,18 +4,8 @@
 //
 
 import Foundation
-import OpenAPIRuntime
-import OpenAPIURLSession
 
-final class StationsListService: StationsListServiceProtocol {
-    private let client: Client
-    private let apiKey: String
-
-    init(client: Client, apiKey: String) {
-        self.client = client
-        self.apiKey = apiKey
-    }
-
+final class StationsListService: BaseService, StationsListServiceProtocol {
     /// Несмотря на то что в документации формат ответа указан как application/json,
     /// на деле сервер отвечает text/html с тем же JSON внутри — поэтому тело читается
     /// как html-поток байтов и декодируется вручную.

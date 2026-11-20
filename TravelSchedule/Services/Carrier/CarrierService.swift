@@ -3,18 +3,7 @@
 //  TravelSchedule
 //
 
-import OpenAPIRuntime
-import OpenAPIURLSession
-
-final class CarrierService: CarrierServiceProtocol {
-    private let client: Client
-    private let apiKey: String
-
-    init(client: Client, apiKey: String) {
-        self.client = client
-        self.apiKey = apiKey
-    }
-
+final class CarrierService: BaseService, CarrierServiceProtocol {
     func getCarrierInfo(code: String, system: String? = nil) async throws -> CarrierInfo {
         let response = try await client.getCarrierInfo(query: .init(
             apikey: apiKey,

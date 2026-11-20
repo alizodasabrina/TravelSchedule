@@ -3,18 +3,7 @@
 //  TravelSchedule
 //
 
-import OpenAPIRuntime
-import OpenAPIURLSession
-
-final class ScheduleService: ScheduleServiceProtocol {
-    private let client: Client
-    private let apiKey: String
-
-    init(client: Client, apiKey: String) {
-        self.client = client
-        self.apiKey = apiKey
-    }
-
+final class ScheduleService: BaseService, ScheduleServiceProtocol {
     func getStationSchedule(station: String) async throws -> StationSchedule {
         let response = try await client.getStationSchedule(query: .init(
             apikey: apiKey,

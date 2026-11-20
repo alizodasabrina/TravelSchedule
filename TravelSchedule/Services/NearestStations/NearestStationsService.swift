@@ -3,18 +3,7 @@
 //  TravelSchedule
 //
 
-import OpenAPIRuntime
-import OpenAPIURLSession
-
-final class NearestStationsService: NearestStationsServiceProtocol {
-    private let client: Client
-    private let apiKey: String
-
-    init(client: Client, apiKey: String) {
-        self.client = client
-        self.apiKey = apiKey
-    }
-
+final class NearestStationsService: BaseService, NearestStationsServiceProtocol {
     func getNearestStations(lat: Double, lng: Double, distance: Int) async throws -> NearestStations {
         let response = try await client.getNearestStations(query: .init(
             apikey: apiKey,
