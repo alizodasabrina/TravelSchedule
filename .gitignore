@@ -103,5 +103,5 @@ iOSInjectionProject/
 # macOS
 .DS_Store
 
-# Unsplash API keys, keep out of git
+# Rasp API key, keep out of git
 Configuration/Secrets.xcconfig
